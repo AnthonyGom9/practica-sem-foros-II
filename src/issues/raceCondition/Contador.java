@@ -1,7 +1,5 @@
 package issues.raceCondition;
 
-import threads.BinarySemaphore;
-
 import java.util.concurrent.Semaphore;
 
 public class Contador {

@@ -1,13 +1,13 @@
 package issues.deadlock;
 
-import threads.BinarySemaphore;
+import java.util.concurrent.Semaphore;
 
 public class DeadLockDemo {
 
     public static void main(String[] args) throws InterruptedException {
-        BinarySemaphore sem1 = new BinarySemaphore();
-        BinarySemaphore sem2 = new BinarySemaphore();
-        BinarySemaphore sem3 = new BinarySemaphore();
+        Semaphore sem1 = new Semaphore(1);
+        Semaphore sem2 = new Semaphore(2);
+        Semaphore sem3 = new Semaphore(3);
 
         Object ob1 = new Object();
         Object ob2 = new Object();
@@ -36,10 +36,10 @@ class SyncThread implements Runnable {
 
     public Object ob1;
     public Object ob2;
-    private final BinarySemaphore sem1;
-    private final BinarySemaphore sem2;
+    private final Semaphore sem1;
+    private final Semaphore sem2;
 
-    public SyncThread(Object ob1, Object ob2, BinarySemaphore sem1, BinarySemaphore sem2){
+    public SyncThread(Object ob1, Object ob2, Semaphore sem1, Semaphore sem2){
         this.ob1 = ob1;
         this.ob2 = ob2;
         this.sem1 = sem1;
