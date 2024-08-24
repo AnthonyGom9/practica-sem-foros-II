@@ -1,12 +1,12 @@
 package issues.starvation;
 
-import threads.BinarySemaphore;
+import java.util.concurrent.Semaphore;
 
 public class StarVationDemo {
 
     public static void main(String [] args){
 
-        BinarySemaphore semaforoBinario = new BinarySemaphore()
+        Semaphore semaforoBinario = new Semaphore(1);
 
         Thread hiloAltaPrioridad = new Thread(new TareaAltaPrioridad(semaforoBinario), "Hilo alta prioridad");
         Thread hiloBajaPrioridad = new Thread(new TareaBajaPrioridad(semaforoBinario), "Hilo baja prioridad");
@@ -20,9 +20,9 @@ public class StarVationDemo {
 
     static class TareaAltaPrioridad implements Runnable{
 
-        private final BinarySemaphore semaforoBinario;
+        private final Semaphore semaforoBinario;
 
-        public TareaAltaPrioridad(BinarySemaphore semaforoBinario){
+        public TareaAltaPrioridad(Semaphore semaforoBinario){
             this.semaforoBinario = semaforoBinario;
         }
 
@@ -44,9 +44,9 @@ public class StarVationDemo {
 
     static class TareaBajaPrioridad implements Runnable{
 
-        private final BinarySemaphore semaforoBinario;
+        private final Semaphore semaforoBinario;
 
-        public TareaBajaPrioridad (BinarySemaphore semaforoBinario){
+        public TareaBajaPrioridad (Semaphore semaforoBinario){
             this.semaforoBinario = semaforoBinario;
         }
 
