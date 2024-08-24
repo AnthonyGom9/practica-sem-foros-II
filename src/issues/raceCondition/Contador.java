@@ -2,13 +2,15 @@ package issues.raceCondition;
 
 import threads.BinarySemaphore;
 
+import java.util.concurrent.Semaphore;
+
 public class Contador {
 
     private int contador = 0;
 
-    private final BinarySemaphore semaphore;
+    private final Semaphore semaphore;
 
-    public Contador(BinarySemaphore semaphore) {
+    public Contador(Semaphore semaphore) {
         this.semaphore = semaphore;
     }
 

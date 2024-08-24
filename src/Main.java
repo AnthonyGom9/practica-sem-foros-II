@@ -2,12 +2,14 @@ import issues.raceCondition.Contador;
 import issues.raceCondition.HiloContador;
 import threads.BinarySemaphore;
 
+import java.util.concurrent.Semaphore;
+
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
 
     public static void main(String[] args) throws InterruptedException {
-        BinarySemaphore semaphore = new BinarySemaphore();
+        Semaphore semaphore = new Semaphore(1);
         Contador contador = new Contador(semaphore);
 
         Runnable tarea1 = new HiloContador(contador);
